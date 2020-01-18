@@ -1,0 +1,5 @@
+[user]
+	email = git@aaronesau.com
+	name = Aaron Esau
+[credential]
+	helper = store

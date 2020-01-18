@@ -19,6 +19,7 @@ inoremap <buffer> <silent> <Up>   <C-o>gk
 inoremap <buffer> <silent> <Down> <C-o>gj
 inoremap <buffer> <silent> <Home> <C-o>g<Home>
 inoremap <buffer> <silent> <End>  <C-o>g<End>
+inoremap jj <Esc>
 
 "" let g:pymcd_powerline="py3"
 "" let g:powerline_pycmd = 'py3'

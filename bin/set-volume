@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "x$1" != "x" ]; then
+    amixer set Master playback "$1%"
+else
+    echo "$0 <volume:0-100>"
+fi

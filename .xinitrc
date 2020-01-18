@@ -48,14 +48,18 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-#twm &
-#xclock -geometry 50x50-1+1 &
-#xterm -geometry 80x50+494+51 &
-#xterm -geometry 80x20+494-0 &
-#exec xterm -geometry 80x66+0+0 -name login
-#exec openbox-kde-session
-#redshift -l '45.418678:-122.787262' &
+redshift -l '45.418678:-122.787262' &
+picom -D 4 --vsync &
+
 #ckb-next -b &
 #STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0 steam -nojoy &
+
+xmodmap ~/.Xmodmap
+xrandr --dpi 220
+xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 0.7
+
+
+/events/xserver_start.sh
+
 exec ssh-agent i3
 

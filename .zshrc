@@ -1,5 +1,7 @@
 export GOPATH="/home/aaron/go"
 
+export OPENCV_LOG_LEVEL=ERROR
+
 check() {
     file "$1"
     echo
@@ -7,7 +9,7 @@ check() {
 }
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/home/aaron/go/bin:/home/aaron/.gem/ruby/2.6.0/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/home/aaron/go/bin:./.gem/ruby/2.7.0/bin/
 
 source /home/aaron/.profile
 
@@ -131,7 +133,6 @@ alias ks="ls"
 alias lks="ls"
 alias kls="ls"
 alias las="ls"
-alias lsd="ls"
 alias lsa="ls"
 alias run="sh run.sh"
 alias hexdump="hexdump -C"
@@ -167,12 +168,12 @@ transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho
 tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
 
 usb() {
-    sudo cryptsetup luksOpen /dev/sdb1 crypted;
+    sudo cryptsetup luksOpen /dev/sda1 crypted;
     sudo mount /dev/mapper/crypted /mnt
 }
 
 clear
-#cat /home/aaron/.screenfetch
-neofetch
+(cat /tmp/neofetch || neofetch) 2>/dev/null
+#neofetch
 alias e="sudo dhcpcd; exit"
-search() {cd /home/aaron/github/dirsearch/ ; python dirsearch.py -u "$1" -e /}
+search() {cd /home/aaron/github/dirsearch/ ; python dirsearch.py -u "$1" -e .}

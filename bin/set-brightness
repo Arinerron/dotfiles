@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "x$1" != "x" ]; then
+    xrandr --output eDP-1 --brightness "$1"
+else
+    echo "$0 <brightness:0-1>"
+fi
