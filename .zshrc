@@ -147,10 +147,17 @@ alias grpe="grep"
 alias gerp="grep"
 alias rgep="grep"
 
+alias pacan=pacman
+alias pamac=pacman
+alias pamcan=pamcan
+alias pcaman=pacman
+alias pacmna=pacman
+
 alias java10="/usr/lib/jvm/java-10-openjdk/bin/java"
 alias javac10="/usr/lib/jvm/java-10-openjdk/bin/javac"
 alias javadoc10="/usr/lib/jvm/java-10-openjdk/bin/javadoc10"
 alias l=ls
+alias sl=ls
 
 alias descent="d2x-rebirth"
 alias irc="irssi"

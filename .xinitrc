@@ -49,14 +49,19 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 redshift -l '45.418678:-122.787262' &
-picom -D 4 --vsync &
+picom -D 3 --vsync -cCGf &
+feh --bg-center --bg-fill Downloads/arinerron2-desktop.png
 
 #ckb-next -b &
 #STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0 steam -nojoy &
 
 xmodmap ~/.Xmodmap
+
 xrandr --dpi 220
+
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 0.7
+xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Click Method Enabled' 0 1
+xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
 
 
 /events/xserver_start.sh
