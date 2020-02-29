@@ -6,7 +6,8 @@ pacman -Q > .pacman-packages.txt
 
 mv .git.dotfiles .git || true
 
+git add -u
 git commit
 git push
 
-mv .git .git.dotfiles
+mv .git .git.dotfiles || true
