@@ -1,5 +1,12 @@
 [user]
 	email = git@aaronesau.com
 	name = Aaron Esau
+	signingkey = D0339FCD4FB1014DDAC74A99A5EAC0AB5A4CF632
 [credential]
 	helper = store
+[commit]
+	gpgsign = true
+[alias]
+	commit = commit
+[gpg]
+	program = gpg

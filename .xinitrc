@@ -49,7 +49,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 redshift -l '45.418678:-122.787262' &
-picom -D 3 --vsync -cCGf &
+sh -c 'while true; do picom -D 3 --vsync -cCGf; done' &
 feh --bg-center --bg-fill Downloads/arinerron2-desktop.png
 
 #ckb-next -b &
@@ -63,8 +63,11 @@ xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 0.7
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Click Method Enabled' 0 1
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
 
+spectacle --dbus &
+i3-battery-popup -n -L 5 &
 
 /events/xserver_start.sh
 
 exec ssh-agent i3
+#exec ssh-agent gpg-agent i3
 

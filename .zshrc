@@ -146,6 +146,7 @@ alias calc.exe="kcalc"
 alias grpe="grep"
 alias gerp="grep"
 alias rgep="grep"
+alias ython="python"
 
 alias pacan=pacman
 alias pamac=pacman
@@ -165,9 +166,16 @@ alias irc="irssi"
 alias df="df -h"
 alias dd="dd status=progress"
 
-pacman() {
-    sudo pacman "$@" | lolcat
-}
+# diff for kitty
+alias d="kitty +kitten diff"
+
+# pacman() {
+#    sudo pacman "$@" | lolcat
+#}
+
+# auto completion init
+autoload -Uz compinit
+compinit
 
 c() {git add .; git commit;}
 mkcd() {mkdir -p "$1" && cd "$1"}

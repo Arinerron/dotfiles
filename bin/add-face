@@ -1,4 +1,0 @@
-#!/bin/sh
-# add a face to unlock this laptop
-
-sudo howdy --user aaron add

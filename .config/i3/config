@@ -9,6 +9,11 @@ assign [class="Discord"] 9
 assign [class="Chromium"] 1
 assign [class="Google-chrome"] 1
 assign [class="Firefox"] 1
+assign [class="pulseeffects"] 8
+assign [class="PulseEffects"] 8
+
+
+for_window [title="Battery Warning"] sticky enable
 
 
 # TOKYO SKYLINE THEME
@@ -77,7 +82,8 @@ focus_follows_mouse no
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 8
+font pango:Operator Mono Lig Book Light 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -105,8 +111,12 @@ bindsym $mod+Ctrl+Shift+Down resize shrink height 10 px or 10 ppt
 bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
-bindsym Control+Mod1+T exec gnome-terminal
+bindsym $mod+Return exec kitty
+bindsym Control+Mod1+T exec kitty
+
+# constrain floating window sizes to prevent chromium from being bad
+# floating_maximum_size 3840 x 2160
+floating_maximum_size 1200 x 900
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -227,11 +237,15 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-font pango:UbuntuMono-regular 8
+#font pango:UbuntuMono-regular 8
 
 gaps inner 15 # 10
 smart_gaps on
 smart_borders on
+
+# disable window borders
+#new_window pixel 0
+for_window [class="^.*"] border pixel 5
 
 # Let Thinkpad media keys change the volume
 bindsym XF86AudioMute exec amixer sset 'Master' toggle
@@ -288,7 +302,7 @@ bar {
     status_command py3status
 
     tray_padding         3
-    font pango:Roboto    9
+    #font pango:Roboto    9
 
     colors {
             # whole color settings

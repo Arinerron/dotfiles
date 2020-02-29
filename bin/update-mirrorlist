@@ -1,3 +1,0 @@
-#!/bin/sh
-
-sudo reflector --verbose --country 'United States' -l 800 -p http --sort rate --save /etc/pacman.d/mirrorlist
