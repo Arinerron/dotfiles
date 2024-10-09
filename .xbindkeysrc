@@ -1,0 +1,5 @@
+"spectacle --region --background"
+    Print
+
+"spectacle --fullscreen --background"
+    Shift+Print
