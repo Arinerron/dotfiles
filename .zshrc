@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH="/home/aaron/.local/bin:/home/aaron/.foundry/bin:$PATH"
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -75,6 +76,12 @@ plugins=(
     z
     fzf
     jump
+    extract
+    systemd
+    colored-man-pages
+    cp
+    encode64
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -123,6 +130,7 @@ alias sudo='sudo '
 alias ports="cat /etc/services"
 alias guit="git"
 alias giut="git"
+alias it="git"
 alias netstat="ss"
 #alias pacman="sudo pacman"
 alias fgrep="grep -ri"
@@ -130,7 +138,6 @@ alias mkdirs="mkdir -p"
 alias tail="tail"
 alias head="head"
 alias grep="grep --color=always"
-alias x="exit"
 alias ks="ls"
 alias lks="ls"
 alias kls="ls"
@@ -155,6 +162,7 @@ alias pamac=pacman
 alias pamcan=pamcan
 alias pcaman=pacman
 alias pacmna=pacman
+alias pacman="sudo pacman"
 
 alias java10="/usr/lib/jvm/java-10-openjdk/bin/java"
 alias javac10="/usr/lib/jvm/java-10-openjdk/bin/javac"
@@ -179,7 +187,6 @@ alias d="kitty +kitten diff"
 autoload -Uz compinit
 compinit
 
-c() {git add .; git commit;}
 mkcd() {mkdir -p "$1" && cd "$1"}
 transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
 tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
@@ -189,18 +196,25 @@ usb() {
     sudo mount /dev/mapper/crypted /mnt
 }
 
+
 clear
-(cat /tmp/neofetch || neofetch) 2>/dev/null
+
+
+if [ -f /tmp/neofetch ]; then
+    cat /tmp/neofetch
+else
+    (neofetch | tee /tmp/neofetch) 2>/dev/null
+fi
+
+
 #neofetch
 search() {cd /home/aaron/github/dirsearch/ ; python dirsearch.py -u "$1" -e .}
 
+alias svim=vim
 alias vim=nvim
 alias v=nvim
+alias im=nvim
 alias neovim=nvim
-
-
-# mapping of "name" => "filetype" for a ton of languages
-# e.g. { "solidity": "sol", "sol": "sol", "golang": "go", "go": "go", "rust": "rs", "rs": "rs", ...}
 
 declare -A language_map
 language_map=(
@@ -216,6 +230,10 @@ language_map=(
     ["js"]="js"
     ["typescript"]="ts"
     ["ts"]="ts"
+    ["tsx"]="tsx"
+    ["yaml"]="yml"
+    ["yml"]="yml"
+    ["json"]="json"
     ["c"]="c"
     ["cpp"]="cpp"
     ["java"]="java"
@@ -225,13 +243,48 @@ language_map=(
     ["sass"]="sass"
     ["move"]="move"
     ["mv"]="move"
+    ["md"]="md"
+    ["markdown"]="md"
+    ["kotlin"]="kt"
+    ["kt"]="kt"
+    ["text"]="txt"
+    ["txt"]="txt"
+    ["tex"]="tex"
+    ["latex"]="tex"
 )
 
+# make nice grep macros like /md that search only in markdown.
+# // is regex match, / is literal match
 for key val in ${(kv)language_map}; do
-    alias /$key="grep -rF --include=\"*.$val\" --exclude-dir=\".git\""
-    alias //$key="grep -ri --include=\"*.$val\" --exclude-dir=\".git\""
+    alias /$key="grep -rF --include=\"*.$val\" --exclude-dir=\".git\" --"
+    alias //$key="grep -ri --include=\"*.$val\" --exclude-dir=\".git\" --"
 done
 
-alias /="grep -rF --exclude-dir=\".git\""
-alias //="grep -ri --exclude-dir=\".git\""
+# make cd go to parent dir if we select a file
+cd() {
+    if [ "x$1" = "x" ]; then
+        builtin cd "$HOME"
+    else
+        if [ -f "$1" ]; then
+            builtin cd "$(dirname "$1")"
+        else
+            builtin cd "$1"
+        fi
+    fi
+}
 
+alias /="grep -rF --exclude-dir=\".git\" --"
+alias //="grep -ri --exclude-dir=\".git\" --"
+
+alias q="exit"
+alias wq="exit"
+alias :q="exit"
+alias :wq="exit"
+
+alias ccd=cd
+alias cdd=cd
+alias ccdd=cd
+alias scd=cd
+alias c=cd
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
