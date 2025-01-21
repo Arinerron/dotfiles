@@ -1,12 +1,32 @@
 [user]
 	email = git@aaronesau.com
 	name = Aaron Esau
-	signingkey = D0339FCD4FB1014DDAC74A99A5EAC0AB5A4CF632
+	signingkey = 02EC5EE6194DA341A132A295FA6E4332B9449910
+	signingkeys = 02EC5EE6194DA341A132A295FA6E4332B9449910
 [credential]
 	helper = store
 [commit]
-	gpgsign = true
+	gpgsign = false
 [alias]
 	commit = commit
+	count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
 [gpg]
 	program = gpg
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[alias]
+       branchcommits = !git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:short)%(color:reset))'
+[url "git@gitea-ssh.zellic.io"]
+	insteadOf = git@gitea.zellic.io
+
+[url "ssh://git@gitea-ssh.zellic.io"]
+    insteadOf = https://gitea.zellic.io
+
+# github
+[url "ssh://git@github.com"]
+    insteadOf = https://github.com
+
