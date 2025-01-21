@@ -81,7 +81,7 @@ plugins=(
     colored-man-pages
     cp
     encode64
-    zsh-syntax-highlighting
+    #zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -129,8 +129,10 @@ alias kilalll='killall'
 alias sudo='sudo '
 alias ports="cat /etc/services"
 alias guit="git"
+alias gt="git"
 alias giut="git"
 alias it="git"
+alias ga.="git add ."
 alias netstat="ss"
 #alias pacman="sudo pacman"
 alias fgrep="grep -ri"
@@ -138,6 +140,7 @@ alias mkdirs="mkdir -p"
 alias tail="tail"
 alias head="head"
 alias grep="grep --color=always"
+alias ls="ls -v --color=auto" # sort by version
 alias ks="ls"
 alias lks="ls"
 alias kls="ls"
@@ -156,6 +159,7 @@ alias grpe="grep"
 alias gerp="grep"
 alias rgep="grep"
 alias ython="python"
+alias seds="sed 's/\.\///g'"
 
 alias pacan=pacman
 alias pamac=pacman
@@ -210,11 +214,21 @@ fi
 #neofetch
 search() {cd /home/aaron/github/dirsearch/ ; python dirsearch.py -u "$1" -e .}
 
-alias svim=vim
+alias svim=nvim
 alias vim=nvim
 alias v=nvim
 alias im=nvim
 alias neovim=nvim
+alias vm=nvim
+
+# because I often run `vim v $file` by accident
+nvim() {
+    #if [ "$1" = "v" || "$1" = "vim" || "$1" = "vi" || "$1" = "vm" || "$1" = "im" ]; then
+    if [ "$1" = "v" ]; then
+        shift
+    fi
+    /usr/bin/nvim "$@"
+}
 
 declare -A language_map
 language_map=(
@@ -251,6 +265,8 @@ language_map=(
     ["txt"]="txt"
     ["tex"]="tex"
     ["latex"]="tex"
+    ["fc"]="fc"
+    ["func"]="fc"
 )
 
 # make nice grep macros like /md that search only in markdown.
@@ -286,5 +302,6 @@ alias cdd=cd
 alias ccdd=cd
 alias scd=cd
 alias c=cd
+alias cd..="cd .."
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
