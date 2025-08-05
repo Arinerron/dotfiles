@@ -8,7 +8,7 @@ set smartindent
 set background=dark
 set clipboard^=unnamed
 
-set pastetoggle=<F2>
+"set pastetoggle=<F2>
 inoremap <S-Tab> <C-d>
 
 setlocal wrap linebreak nolist
@@ -46,7 +46,7 @@ endif
 
 syntax on
 
-source $VIMRUNTIME/mswin.vim
+"source $VIMRUNTIME/mswin.vim
 "behave mswin
 
 :nmap ; :
@@ -111,6 +111,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'navarasu/onedark.nvim'
 Plug 'udalov/kotlin-vim'
+Plug 'tact-lang/tact.vim'
 call plug#end()
 
 " colorscheme
@@ -215,3 +216,11 @@ require("nvim-treesitter.configs").setup({
     },
 })
 EOF
+
+" .dec means C#
+au BufRead,BufNewFile *.dec set filetype=cs
+
+" delete carriage returns, format whole file
+command! CleanFormat silent! %s/\%x00//g | silent! %s/\r$// | normal! ggVG==
+
+set shiftwidth=4

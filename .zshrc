@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export PATH="/home/aaron/.local/bin:/home/aaron/.foundry/bin:$PATH"
+export PATH="/home/aaron/.local/bin:/home/aaron/.foundry/bin:/home/aaron/.avm/bin:$PATH"
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -151,6 +151,7 @@ alias hexdump="hexdump -C"
 alias s="ls"
 alias ,,=..
 alias :q=exit
+alias q:=exit
 alias btw=screenfetch
 alias srm=shred
 alias dmesg="dmesg -Tku"
@@ -167,6 +168,7 @@ alias pamcan=pamcan
 alias pcaman=pacman
 alias pacmna=pacman
 alias pacman="sudo pacman"
+alias set-brightness="sudo set-brightness"
 
 alias java10="/usr/lib/jvm/java-10-openjdk/bin/java"
 alias javac10="/usr/lib/jvm/java-10-openjdk/bin/javac"
@@ -267,6 +269,8 @@ language_map=(
     ["latex"]="tex"
     ["fc"]="fc"
     ["func"]="fc"
+    ["circom"]="circom"
+    ["dec"]="dec"
 )
 
 # make nice grep macros like /md that search only in markdown.
@@ -289,6 +293,19 @@ cd() {
     fi
 }
 
+# "gitp ush" => "git push"
+# "gitp ull" => "git pull"
+gitp() {
+    # if empty, assume pull
+    arg1="p$1"
+    if [ "$1" = "p" ]; then
+        git pull
+        return
+    fi
+    shift
+    git "$arg1" "$@"
+}
+
 alias /="grep -rF --exclude-dir=\".git\" --"
 alias //="grep -ri --exclude-dir=\".git\" --"
 
@@ -298,6 +315,7 @@ alias :q="exit"
 alias :wq="exit"
 
 alias ccd=cd
+alias cdcd=cd
 alias cdd=cd
 alias ccdd=cd
 alias scd=cd
@@ -305,3 +323,13 @@ alias c=cd
 alias cd..="cd .."
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+alias get_idf='. $HOME/github/esp-idf/export.sh'
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/aaron/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/aaron/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/aaron/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/aaron/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+

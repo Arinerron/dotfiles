@@ -62,10 +62,16 @@ xrandr --dpi 220
 #xmodmap ~/.Xmodmap
 #xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 1
 #xinput --set-prop 'TPPS/2 Elan TrackPoint' 'libinput Accel Speed' 1.0
-xinput set-prop 'Synaptics TM3512-010' 'libinput Accel Speed' 0.7
-xinput set-prop 'Synaptics TM3512-010' 'libinput Click Method Enabled' 0 1
-xinput set-prop 'Synaptics TM3512-010' 'libinput Tapping Enabled' 1
-#xinput --set-prop 13 'libinput Accel Speed' 0.6
+
+#xinput set-prop 'Synaptics TM3512-010' 'libinput Accel Speed' 0.7
+#xinput set-prop 'Synaptics TM3512-010' 'libinput Click Method Enabled' 0 1
+#xinput set-prop 'Synaptics TM3512-010' 'libinput Tapping Enabled' 1
+
+xinput set-prop 'SNSL002D:00 2C2F:002D Touchpad' 'libinput Tapping Enabled' 1
+xinput set-prop 'SNSL002D:00 2C2F:002D Touchpad' 'libinput Accel Speed' 0.8
+xinput set-prop 'SNSL002D:00 2C2F:002D Touchpad' 'libinput Scrolling Pixel Distance' 10
+
+
 setxkbmap -option compose:ralt,caps:super
 #xmodmap ~/.Xmodmap
 #setxkbmap -option caps:super
