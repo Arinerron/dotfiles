@@ -1,0 +1,8 @@
+#!/bin/bash
+f=~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png
+# Old version without screen freeze:
+# if maim -s "$f" && xclip -selection clipboard -t image/png -i "$f"; then
+# New version with screen freeze:
+if scrot --freeze --select "$f" && xclip -selection clipboard -t image/png -i "$f"; then
+    notify-send "Screenshot captured" "Saved to $(basename "$f")" -i "$f" -t 2000
+fi

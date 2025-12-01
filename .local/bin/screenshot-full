@@ -1,0 +1,5 @@
+#!/bin/bash
+f=~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png
+if maim "$f" && xclip -selection clipboard -t image/png -i "$f"; then
+    notify-send "Screenshot captured" "Saved to $(basename "$f")" -i "$f" -t 2000
+fi
