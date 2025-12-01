@@ -67,9 +67,11 @@ xrandr --dpi 220
 #xinput set-prop 'Synaptics TM3512-010' 'libinput Click Method Enabled' 0 1
 #xinput set-prop 'Synaptics TM3512-010' 'libinput Tapping Enabled' 1
 
+# THinkpad P1 Gen 7
 xinput set-prop 'SNSL002D:00 2C2F:002D Touchpad' 'libinput Tapping Enabled' 1
 xinput set-prop 'SNSL002D:00 2C2F:002D Touchpad' 'libinput Accel Speed' 0.8
 xinput set-prop 'SNSL002D:00 2C2F:002D Touchpad' 'libinput Scrolling Pixel Distance' 10
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
 
 
 setxkbmap -option compose:ralt,caps:super
@@ -85,7 +87,7 @@ xbindkeys -f ~/.xbindkeysrc &
 
 
 spectacle --dbus &
-i3-battery-popup -n -L 8 &
+i3-battery-popup -n -L 20 &
 
 /events/xserver_start.sh
 

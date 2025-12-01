@@ -1,5 +1,5 @@
-"spectacle --region --background"
+"spectacle --region --background --copy-image"
     Print
 
-"spectacle --fullscreen --background"
+"spectacle --fullscreen --background --copy-image"
     Shift+Print

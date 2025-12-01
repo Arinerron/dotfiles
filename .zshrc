@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export PATH="/home/aaron/.local/bin:/home/aaron/.foundry/bin:/home/aaron/.avm/bin:$PATH"
+export PATH="/home/aaron/.local/bin:/home/aaron/.foundry/bin:/home/aaron/.avm/bin:$PATH:/home/aaron/bin/sui/:/home/aaron/.npm-global/bin/"
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -133,6 +133,8 @@ alias gt="git"
 alias giut="git"
 alias it="git"
 alias ga.="git add ."
+alias gitpull="git pull"
+alias gitpush="git push"
 alias netstat="ss"
 #alias pacman="sudo pacman"
 alias fgrep="grep -ri"
@@ -141,6 +143,7 @@ alias tail="tail"
 alias head="head"
 alias grep="grep --color=always"
 alias ls="ls -v --color=auto" # sort by version
+alias ll=ls
 alias ks="ls"
 alias lks="ls"
 alias kls="ls"
@@ -185,6 +188,8 @@ alias dd="dd status=progress"
 # diff for kitty
 alias d="kitty +kitten diff"
 
+alias chormium=chromium
+
 # pacman() {
 #    sudo pacman "$@" | lolcat
 #}
@@ -218,6 +223,7 @@ search() {cd /home/aaron/github/dirsearch/ ; python dirsearch.py -u "$1" -e .}
 
 alias svim=nvim
 alias vim=nvim
+alias vin=nvim
 alias v=nvim
 alias im=nvim
 alias neovim=nvim
@@ -333,3 +339,7 @@ if [ -f '/home/aaron/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/a
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/aaron/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/aaron/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
+
+export DEVKITPRO=/opt/devkitpro
+export DEVKITARM=/opt/devkitpro/devkitARM
+export DEVKITPPC=/opt/devkitpro/devkitPPC
